@@ -15,16 +15,15 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            // TODO: Verificar se a capacidade Ã© maior ou igual ao nÃºmero de hÃ³spedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            if (true)
+            // Verifica se a capacidade da suíte é suficiente para os hóspedes
+            if (hospedes.Count <= Suite.Capacidade)
             {
                 Hospedes = hospedes;
             }
             else
             {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o nÃºmero de hÃ³spedes recebido
-                // *IMPLEMENTE AQUI*
+                // Lança uma exceção se a capacidade for menor que o número de hóspedes
+                throw new Exception("A capacidade da suíte é menor do que o número de hóspedes.");
             }
         }
 
@@ -35,26 +34,22 @@ namespace DesafioProjetoHospedagem.Models
 
         public int ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hÃ³spedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+            // Retorna a quantidade de hóspedes
+            return Hospedes.Count;
         }
 
         public decimal CalcularValorDiaria()
         {
-            // TODO: Retorna o valor da diÃ¡ria
-            // CÃ¡lculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
-            decimal valor = 0;
+            // Cálculo do valor total da diária
+            decimal valorTotal = DiasReservados * Suite.ValorDiaria;
 
-            // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
-            // *IMPLEMENTE AQUI*
-            if (true)
+            // Verifica se os dias reservados são maiores ou iguais a 10 para aplicar o desconto de 10%
+            if (DiasReservados >= 10)
             {
-                valor = 0;
+                valorTotal *= 0.90M; // Aplica o desconto de 10%
             }
 
-            return valor;
+            return valorTotal;
         }
     }
 }
